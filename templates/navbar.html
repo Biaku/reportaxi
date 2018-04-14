@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="{% url 'webclient:inicio' %}">ReporTaxi</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'webclient:inicio' %}">Inicio <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'webclient:servicios' %}">Taxis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'webclient:tarifas' %}">Tarifas oficiales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'webclient:sectores' %}">Sectores</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'webclient:sabias_que' %}">¿Sabias que?</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'webclient:publicar' %}"><span class="text-warning">¡Publicar!</span></a>
+            </li>
+
+        </ul>
+        <ul class="navbar-nav">
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'authx:logout' %}">Salir</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'authx:register' %}">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'authx:login' %}">Iniciar sesion</a>
+                </li>
+            {% endif %}
+
+
+        </ul>
+        {#        <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'webclient:servicio-busqueda' %}">#}
+        {#            <input type="number" class="form-control mr-sm-2" placeholder="Numero de taxi" name="numero">#}
+        {#            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>#}
+        {#        </form>#}
+    </div>
+</nav>

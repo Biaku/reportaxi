@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Reportaxi</h1>
+                <p>Aqui podras llevar el registro de los tus viajes en taxi que has tomado, califcarlos y tambien ver
+                    las calificaciones de los demas usuarios</p>
+
+                <h6>Informacion importante</h6>
+                <p><a href="{% url 'webclient:tarifas' %}">> Tarifas oficiales de acuerdo a la SCT</a></p>
+                <p><a href="{% url 'webclient:sectores' %}">> Sectores de Taxis y Radiotaxis</a></p>
+                <p><a target="_blank" href="http://www.ordenjuridico.gob.mx/Documentos/Estatal/Tabasco/wo26713.pdf">>
+                    Ley de Transportes para el estado de Tabasco</a></p>
+                <p><a target="_blank" href="http://www.ordenjuridico.gob.mx/Documentos/Estatal/Tabasco/wo105932.pdf">>
+                    Reglamento de la Ley de Transportes para el estado de Tabasco</a></p>
+                <hr>
+                <h6>Cuentanos que tal han sido tus viajes</h6>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'webclient:publicar' %}" class="btn btn-primary btn-block">Publicar</a>
+                {% else %}
+                    <p>Necesitas iniciar sesion para publicar</p>
+                    <a href="{% url 'authx:login' %}" class="btn btn-primary btn-block">Iniciar sesion</a>
+                    <a href="{% url 'authx:register' %}" class="btn btn-primary btn-block">Registrarse</a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $("input").addClass("form-control");
+        $("select").addClass("form-control");
+        $("textarea").addClass("form-control");
+        $("textarea").attr("rows", 5);
+    </script>
+{% endblock %}

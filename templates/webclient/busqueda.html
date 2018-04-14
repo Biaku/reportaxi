@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+    <style>
+        .bgt-amarillo {
+            background-image: url("{% static 'img/bga.png' %}");
+            background-size: 12px;
+        }
+
+        .bgt-blanco {
+            background-image: url("{% static 'img/bgb.png' %}");
+            background-size: 12px;
+        }
+
+        .numero-t {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <div class="input-group mb-3">
+                        <input type="number" min="1" class="form-control" placeholder="Numero del Taxi"
+                               aria-label="Recipient's username" aria-describedby="basic-addon2"
+                               name="number" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                <p>Buscaste al Taxi numero: {{ dato }}
+                    {% if msj %}
+                        <p>{{ msj }}, pero igual puedes:</p>
+                        <a href="{% url 'webclient:publicar' %}" class="btn btn-primary btn-block">Publicar</a>
+                    {% endif %}
+                {% for taxi in taxis %}
+                    <div class="card mb-2">
+                        <div class="card-header bg-primary text-white">
+                            <span class="numero-t">Taxi {{ taxi.numero }}</span>
+                            <span class="bgt-{{ taxi.get_color_display|lower }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">El servicio fue: {{ taxi.get_calificacion_display }}</li>
+                                <li class="list-group-item">Cobro: {{ taxi.costo }}</li>
+                                <li class="list-group-item">Comentario: {{ taxi.comentario }}</li>
+                                <li class="list-group-item">Publicado el: {{ taxi.creado|date:"d/m/y g:m a" }}</li>
+                                <li class="list-group-item">Por: {{ taxi.usuario }}</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -8,6 +8,8 @@ from django.views.generic import ListView
 
 from apps.core.models import Taxi
 from apps.webclient.forms import TaxiForm, TaxiBusquedaForm
+
+from django.core.mail import send_mail
 
 
 def inicio(request):
@@ -77,8 +79,8 @@ def publicar(request):
             form = form.save(commit=False)
             form.usuario = request.user
             form.save()
-            messages.success(request, "Informacion guardada, gracias por colaborar =)")
-            return redirect(reverse('webclient:inicio'))
+            messages.success(request, "¡Publicado! gracias por colaborar =)")
+            return redirect(reverse('webclient:servicios'))
     return render(request, 'webclient/publicar.html', {'form': form})
 
 
@@ -92,3 +94,9 @@ def sectores(request):
 
 def sabias_que(request):
     return render(request, 'webclient/sabias_que.html')
+
+
+def enviar_email(request):
+    send_mail('subject', 'body of the message', 'email@itvh.xyz',
+              ['tavo_x99@hotmail.com', ])
+    return HttpResponse("ok")

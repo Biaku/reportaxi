@@ -15,7 +15,7 @@ def register(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            messages.success(request, "Registro correctamente, ahora ya puedes publicar =)")
+            messages.success(request, "Registrado correctamente, ahora ya puedes publicar =)")
             return redirect('weblcient:publicar')
     else:
         form = SignUpForm()

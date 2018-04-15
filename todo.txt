@@ -1,0 +1,1 @@
+- Mostrar mensaje informativo al usuario cuando realice una publicacion

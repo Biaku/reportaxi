@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title_tab %}
-Taxis - Reportaxi
+    Taxis - Reportaxi
 {% endblock %}
 {% block extra_css %}
     <style>
@@ -26,6 +26,14 @@ Taxis - Reportaxi
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-dismissible alert-success">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 <h1><a href="{% url 'webclient:servicios' %}">Taxis</a></h1>
                 <form action="{% url 'webclient:servicio-busqueda' %}">
                     <div class="input-group mb-3">

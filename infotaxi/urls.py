@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404,handler500
+from django.contrib.auth import views as auth_views
 
 from apps.webclient.views import error_404
 
@@ -14,10 +15,10 @@ urlpatterns = [
     path('', include('apps.webclient.urls', namespace='weblcient')),
 
     # API
-    # path('api/', include('apps.api.urls')),
+    path('apix/', include('apps.api.urls')),
 
     # AUTH
-    # path('auth/', include('rest_framework_social_oauth2.urls')),
+    path('authx/', include('rest_framework_social_oauth2.urls')),
 
     # path('login/', auth_views.login, name='login'),
     # path('logout/', auth_views.logout, {'next_page': '/'}, name='logout'),

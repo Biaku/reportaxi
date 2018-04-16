@@ -1,1 +1,3 @@
-- Mostrar mensaje informativo al usuario cuando realice una publicacion
+- Mostrar mensaje informativo al usuario cuando realice una publicacion [ok]
+- cambiar el alt de la imagen de correo [ok]
+- agregar que es pdf las leyes[ok]

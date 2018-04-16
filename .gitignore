@@ -106,3 +106,7 @@ idea/
 
 #sqlite
 db.sqlite3
+
+#deploy
+gunicorn_start
+logs/

@@ -110,3 +110,8 @@ def enviar_email(request):
     # send_mail('subject', 'body of the message', 'email@reportaxi.com',
     #           ['tavo_x99@hotmail.com', ])
     return HttpResponse("ok")
+
+
+def error_404(request):
+    data = {}
+    return render(request, 'webclient/404.html', data)

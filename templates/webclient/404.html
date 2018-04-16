@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="REPORTAXI - disculpa algo no salio bien.">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link href="{% static '/open-iconic/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'img/favico.png' %}" type="image/x-icon">
+    {#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"#}
+    {#          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">#}
+
+    <title>
+        Algo ha salido mal =( - Reportaxi
+    </title>
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .bg-yellow {
+            background-color: #f8c12c;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div style="max-width: 80%;background-color: #eaeaea; display: inline-block;" class="p-5">
+                <img src="http://i1244.photobucket.com/albums/gg575/Biaku/404_zpstyz9716t.png" alt="algo salio mal" class="img-fluid">
+                <br>
+                <br>
+                <h2>Reportaxi</h2>
+                <h2>Disculpa no se encontro lo que buscabas</h2>
+                <br>
+                <br>
+                <a href="{% url 'webclient:inicio' %}" class="btn btn-warning">Regresar al inicio</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

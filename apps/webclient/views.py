@@ -3,13 +3,14 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.generic import ListView
 
 from apps.core.models import Taxi
 from apps.webclient.forms import TaxiForm, TaxiBusquedaForm
 
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 
 
 def inicio(request):
@@ -97,6 +98,15 @@ def sabias_que(request):
 
 
 def enviar_email(request):
-    send_mail('subject', 'body of the message', 'email@itvh.xyz',
-              ['tavo_x99@hotmail.com', ])
+    body = render_to_string('webclient/email_register.html', {'user': 'tavo', 'pass': 'asdasdasd'})
+    email_message = EmailMessage(
+        subject='Gracias por registrate.',
+        body=body,
+        from_email='REPORTAXI <email@reportaxi.com>',
+        to=['tavo_x99@hotmail.com']
+    )
+    email_message.content_subtype = 'html'
+    email_message.send()
+    # send_mail('subject', 'body of the message', 'email@reportaxi.com',
+    #           ['tavo_x99@hotmail.com', ])
     return HttpResponse("ok")
